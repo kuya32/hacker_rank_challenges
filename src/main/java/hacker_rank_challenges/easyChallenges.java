@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        String s = "07:05:45AM";
+        String s = "12:05:45AM";
         System.out.println(timeConversion(s));
     }
 
@@ -110,13 +110,38 @@ public class easyChallenges {
 
     static String timeConversion(String s) {
         String output = "";
-        if (s.contains("AM")) {
-            String[] arr = s.split("AM");
-            for (int i = 0; i < arr.length; i++) {
-                output += arr[i];
+        if (s.contains("AM") && s.contains("12")) {
+            String change = s.substring(0, 2);
+            int num = Integer.parseInt(change);
+            int newNum = num - 12;
+            String newString = Integer.toString(newNum);
+            String newString2 = newString + "0";
+            String newS = s.replace(change, newString2);
+            String[] pm = newS.split("AM");
+            for (String value : pm) {
+                output += value;
+            }
+        } else if (s.contains("AM")) {
+            String[] am = s.split("AM");
+            for (String value : am) {
+                output += value;
+            }
+        } else if (s.contains("PM") && s.contains("12")) {
+            String[] pm = s.split("PM");
+            for (String value : pm) {
+                output += value;
+            }
+        } else {
+            String change = s.substring(0, 2);
+            int num = Integer.parseInt(change);
+            int newNum = num + 12;
+            String newString = Integer.toString(newNum);
+            String newS = s.replace(change, newString);
+            String[] pm = newS.split("PM");
+            for (String value : pm) {
+                output += value;
             }
         }
-        
         return output;
     }
 }
