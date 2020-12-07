@@ -1,11 +1,15 @@
 package hacker_rank_challenges;
 
+import com.google.common.collect.HashBiMap;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        String s = "12:05:45AM";
-        System.out.println(timeConversion(s));
+        String s = "cdcdcdcdeeeef";
+        System.out.println(gameOfThrones(s));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -143,5 +147,31 @@ public class easyChallenges {
             }
         }
         return output;
+    }
+
+    static String gameOfThrones(String s) {
+        String answer = "";
+        char[] letter = s.toCharArray();
+        char[] letter2 = s.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> map2 = new HashMap<Character, Integer>();
+        for (Character letters : letter) {
+            int count = map.containsKey(letters) ? map.get(letters) : 0;
+            map.put(letters, count + 1);
+        }
+        for (int i = 0; i < letter2.length / 2; i++) {
+            char temp = letter2[i];
+            letter2[i] = letter2[letter2.length - 1 - i];
+            letter2[letter2.length - 1 - i] = temp;
+        }
+        for (Character letters : letter2) {
+            int count = map2.containsKey(letters) ? map2.get(letters) : 0;
+            map2.put(letters, count + 1);
+        }
+        System.out.println(map.values());
+        System.out.println(map2.values());
+        answer = new ArrayList<>(map.values()).equals(new ArrayList<>(map2.values())) ? "YES" :
+                "NO";
+        return answer;
     }
 }
