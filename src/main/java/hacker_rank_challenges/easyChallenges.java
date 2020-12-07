@@ -153,11 +153,18 @@ public class easyChallenges {
         String answer = "";
         char[] letter = s.toCharArray();
         char[] letter2 = s.toCharArray();
+        boolean moreThanOne = false;
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
         HashMap<Character, Integer> map2 = new HashMap<Character, Integer>();
         for (Character letters : letter) {
             int count = map.containsKey(letters) ? map.get(letters) : 0;
             map.put(letters, count + 1);
+        }
+        for (Character letters : letter) {
+            if (map.get(letters) > 1) {
+                moreThanOne = true;
+                break;
+            }
         }
         for (int i = 0; i < letter2.length / 2; i++) {
             char temp = letter2[i];
@@ -170,7 +177,10 @@ public class easyChallenges {
         }
         System.out.println(map.values());
         System.out.println(map2.values());
-        answer = new ArrayList<>(map.values()).equals(new ArrayList<>(map2.values())) ? "YES" :
+        answer =
+                new ArrayList<>(map.values()).equals(new ArrayList<>(map2.values())) &&
+                        moreThanOne ?
+                "YES" :
                 "NO";
         return answer;
     }
