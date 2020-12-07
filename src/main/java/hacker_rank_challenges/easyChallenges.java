@@ -1,11 +1,15 @@
 package hacker_rank_challenges;
 
+import com.google.common.collect.HashBiMap;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        String s = "07:05:45AM";
-        System.out.println(timeConversion(s));
+        String s = "cdcdcdcdeeeef";
+        System.out.println(gameOfThrones(s));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -110,13 +114,64 @@ public class easyChallenges {
 
     static String timeConversion(String s) {
         String output = "";
-        if (s.contains("AM")) {
-            String[] arr = s.split("AM");
-            for (int i = 0; i < arr.length; i++) {
-                output += arr[i];
+        if (s.contains("AM") && s.contains("12")) {
+            String change = s.substring(0, 2);
+            int num = Integer.parseInt(change);
+            int newNum = num - 12;
+            String newString = Integer.toString(newNum);
+            String newString2 = newString + "0";
+            String newS = s.replace(change, newString2);
+            String[] pm = newS.split("AM");
+            for (String value : pm) {
+                output += value;
+            }
+        } else if (s.contains("AM")) {
+            String[] am = s.split("AM");
+            for (String value : am) {
+                output += value;
+            }
+        } else if (s.contains("PM") && s.contains("12")) {
+            String[] pm = s.split("PM");
+            for (String value : pm) {
+                output += value;
+            }
+        } else {
+            String change = s.substring(0, 2);
+            int num = Integer.parseInt(change);
+            int newNum = num + 12;
+            String newString = Integer.toString(newNum);
+            String newS = s.replace(change, newString);
+            String[] pm = newS.split("PM");
+            for (String value : pm) {
+                output += value;
             }
         }
-        
         return output;
+    }
+
+    static String gameOfThrones(String s) {
+        String answer = "";
+        char[] letter = s.toCharArray();
+        char[] letter2 = s.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> map2 = new HashMap<Character, Integer>();
+        for (Character letters : letter) {
+            int count = map.containsKey(letters) ? map.get(letters) : 0;
+            map.put(letters, count + 1);
+        }
+        for (int i = 0; i < letter2.length / 2; i++) {
+            char temp = letter2[i];
+            letter2[i] = letter2[letter2.length - 1 - i];
+            letter2[letter2.length - 1 - i] = temp;
+        }
+        for (Character letters : letter2) {
+            int count = map2.containsKey(letters) ? map2.get(letters) : 0;
+            map2.put(letters, count + 1);
+        }
+        System.out.println(map.values());
+        System.out.println(map2.values());
+        answer = new ArrayList<>(map.values()).equals(new ArrayList<>(map2.values())) ? "YES" :
+                "NO";
+        return answer;
     }
 }
