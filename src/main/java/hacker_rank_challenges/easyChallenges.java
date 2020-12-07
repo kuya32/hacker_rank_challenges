@@ -8,8 +8,12 @@ import java.util.HashSet;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        String s = "cdcdcdcdeeeef";
-        System.out.println(gameOfThrones(s));
+        ArrayList<Integer> grades = new ArrayList<>();
+        grades.add(73);
+        grades.add(67);
+        grades.add(38);
+        grades.add(33);
+        System.out.println(gradingStudents(grades));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -183,5 +187,17 @@ public class easyChallenges {
                 "YES" :
                 "NO";
         return answer;
+    }
+
+    public static ArrayList<Integer> gradingStudents(ArrayList<Integer> grades) {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        for (int grade : grades) {
+            if (grade < 38 || grade % 5 < 3) {
+                numbers.add(grade);
+            } else {
+                numbers.add(grade + (5 - (grade % 5)));
+            }
+        }
+        return numbers;
     }
 }
