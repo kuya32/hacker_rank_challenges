@@ -8,8 +8,11 @@ import java.util.HashSet;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        String s = "cdcdcdcdeeeef";
-        System.out.println(gameOfThrones(s));
+        int s = 43;
+        int t = 2;
+        int a = 70;
+        int b = 2;
+        System.out.println(kangaroo(s, t, a, b));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -153,11 +156,18 @@ public class easyChallenges {
         String answer = "";
         char[] letter = s.toCharArray();
         char[] letter2 = s.toCharArray();
+        boolean moreThanOne = false;
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
         HashMap<Character, Integer> map2 = new HashMap<Character, Integer>();
         for (Character letters : letter) {
             int count = map.containsKey(letters) ? map.get(letters) : 0;
             map.put(letters, count + 1);
+        }
+        for (Character letters : letter) {
+            if (map.get(letters) > 1) {
+                moreThanOne = true;
+                break;
+            }
         }
         for (int i = 0; i < letter2.length / 2; i++) {
             char temp = letter2[i];
@@ -170,8 +180,52 @@ public class easyChallenges {
         }
         System.out.println(map.values());
         System.out.println(map2.values());
-        answer = new ArrayList<>(map.values()).equals(new ArrayList<>(map2.values())) ? "YES" :
+        answer =
+                new ArrayList<>(map.values()).equals(new ArrayList<>(map2.values())) &&
+                        moreThanOne ?
+                "YES" :
                 "NO";
         return answer;
     }
+
+    public static ArrayList<Integer> gradingStudents(ArrayList<Integer> grades) {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        for (int grade : grades) {
+            if (grade < 38 || grade % 5 < 3) {
+                numbers.add(grade);
+            } else {
+                numbers.add(grade + (5 - (grade % 5)));
+            }
+        }
+        return numbers;
+    }
+
+    static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges) {
+        int appleCounter = 0;
+        int orangeCounter = 0;
+        for (int apple : apples) {
+            if ((a + apple) >= s && (a + apple) <= t) {
+                appleCounter++;
+            }
+        }
+        for (int orange : oranges) {
+            if ((b + orange) >= s && (b + orange) <= t) {
+                orangeCounter++;
+            }
+        }
+        System.out.println(appleCounter);
+        System.out.println(orangeCounter);
+    }
+
+    static String kangaroo(int x1, int v1, int x2, int v2) {
+        String encounter = "NO";
+        if (v1 == v2) {
+            return encounter;
+        } else if ((x2 - x1) % (v2 - v1) == 0 && (x2 - x1) * (v2 - v1) < 0) {
+            encounter = "YES";
+        }
+        return encounter;
+    }
+
+    
 }
