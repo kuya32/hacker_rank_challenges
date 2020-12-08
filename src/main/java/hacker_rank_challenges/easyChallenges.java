@@ -3,16 +3,14 @@ package hacker_rank_challenges;
 import com.google.common.collect.HashBiMap;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int s = 43;
-        int t = 2;
-        int a = 70;
-        int b = 2;
-        System.out.println(kangaroo(s, t, a, b));
+        int[] scores = new int[]{3, 4, 21, 36, 10, 28, 35, 5, 24, 42};
+        System.out.println(Arrays.toString(breakingRecords(scores)));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -227,5 +225,23 @@ public class easyChallenges {
         return encounter;
     }
 
-    
+    static int[] breakingRecords(int[] scores) {
+        int counterHighest = 0;
+        int counterLowest = 0;
+        int highest = scores[0];
+        int lowest = scores[0];
+        int[] output = new int[2];
+        for (int score : scores) {
+            if (score > highest) {
+                highest = score;
+                counterHighest++;
+            } else if (score < lowest) {
+                lowest = score;
+                counterLowest++;
+            }
+        }
+        output[0] = counterHighest;
+        output[1] = counterLowest;
+        return output;
+    }
 }
