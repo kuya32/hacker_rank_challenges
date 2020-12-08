@@ -227,5 +227,5 @@ public class easyChallenges {
         return encounter;
     }
 
-    
+
 }
