@@ -8,13 +8,11 @@ import java.util.HashSet;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int s = 7;
-        int t = 11;
-        int a = 5;
-        int b = 15;
-        int[] apples = new int[]{-2, 2, 1};
-        int[] oranges = new int[]{5, -6};
-        countApplesAndOranges(s, t, a, b, apples, oranges);
+        int s = 43;
+        int t = 2;
+        int a = 70;
+        int b = 2;
+        System.out.println(kangaroo(s, t, a, b));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -217,6 +215,16 @@ public class easyChallenges {
         }
         System.out.println(appleCounter);
         System.out.println(orangeCounter);
+    }
+
+    static String kangaroo(int x1, int v1, int x2, int v2) {
+        String encounter = "NO";
+        if (v1 == v2) {
+            return encounter;
+        } else if ((x2 - x1) % (v2 - v1) == 0 && (x2 - x1) * (v2 - v1) < 0) {
+            encounter = "YES";
+        }
+        return encounter;
     }
 
     
