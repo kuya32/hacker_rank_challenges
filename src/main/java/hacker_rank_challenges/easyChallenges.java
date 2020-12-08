@@ -8,12 +8,13 @@ import java.util.HashSet;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        ArrayList<Integer> grades = new ArrayList<>();
-        grades.add(73);
-        grades.add(67);
-        grades.add(38);
-        grades.add(33);
-        System.out.println(gradingStudents(grades));
+        int s = 7;
+        int t = 11;
+        int a = 5;
+        int b = 15;
+        int[] apples = new int[]{-2, 2, 1};
+        int[] oranges = new int[]{5, -6};
+        countApplesAndOranges(s, t, a, b, apples, oranges);
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -200,4 +201,23 @@ public class easyChallenges {
         }
         return numbers;
     }
+
+    static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges) {
+        int appleCounter = 0;
+        int orangeCounter = 0;
+        for (int apple : apples) {
+            if ((a + apple) >= s && (a + apple) <= t) {
+                appleCounter++;
+            }
+        }
+        for (int orange : oranges) {
+            if ((b + orange) >= s && (b + orange) <= t) {
+                orangeCounter++;
+            }
+        }
+        System.out.println(appleCounter);
+        System.out.println(orangeCounter);
+    }
+
+    
 }
