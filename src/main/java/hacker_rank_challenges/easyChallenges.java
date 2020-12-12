@@ -2,15 +2,12 @@ package hacker_rank_challenges;
 
 import com.google.common.collect.HashBiMap;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int[] scores = new int[]{3, 4, 21, 36, 10, 28, 35, 5, 24, 42};
-        System.out.println(Arrays.toString(breakingRecords(scores)));
+        int[] birds2 = new int[]{3, 10, 2, 9};
+        bonAppetit(birds2, 1, 12);
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -257,6 +254,51 @@ public class easyChallenges {
         return counter;
     }
 
-    
+//    static int birthday(ArrayList<Integer> s, int d, int m) {
+//        int output = 0;
+//        for (int i = 0; i < s.size(); i++) {
+//            int sum = 0;
+//            for (int j = 0; j < m; j++) {
+//                sum += s.get(j+i);
+//            }
+//            if (sum == d) {
+//                output++;
+//            }
+//        }
+//        return output;
+//    }
+
+    static int migratoryBirds(int[] arr) {
+        int winner = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int bird : arr) {
+            int count = map.containsKey(bird) ? map.get(bird) : 0;
+            map.put(bird, count + 1);
+        }
+//        for (Map.Entry<Integer, Integer> bird : map.entrySet()) {
+//            if (bird.getValue() > winner) {
+//                winner = bird.getKey();
+//            }
+//        }
+//        return winner;
+        // Found looking through discussions on the problem, but don't really know how it works
+        return Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey();
+    }
+
+    static void bonAppetit(int[] bill, int k, int b) {
+        int dinner = 0;
+        for (int i = 0; i < bill.length; i++) {
+            if (i == k) {
+                continue;
+            }
+            dinner += bill[i];
+        }
+        dinner = dinner / 2;
+        if (dinner == b) {
+            System.out.println("Bon Appetit");
+        } else {
+            System.out.println(b - dinner);
+        }
+    }
 
 }
