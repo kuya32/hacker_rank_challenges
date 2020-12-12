@@ -301,4 +301,17 @@ public class easyChallenges {
         }
     }
 
+    static int sockMerchant(int n, int[] ar) {
+        int pairs = 0;
+        HashSet<Integer> socks = new HashSet<>();
+        for (int i = 0; i < ar.length; i++) {
+            if (!socks.contains(ar[i])) {
+                socks.add(ar[i]);
+            } else {
+                pairs++;
+                socks.remove(ar[i]);
+            }
+        }
+        return pairs;
+    }
 }
