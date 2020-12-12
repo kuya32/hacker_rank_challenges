@@ -2,15 +2,12 @@ package hacker_rank_challenges;
 
 import com.google.common.collect.HashBiMap;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int[] scores = new int[]{3, 4, 21, 36, 10, 28, 35, 5, 24, 42};
-        System.out.println(Arrays.toString(breakingRecords(scores)));
+        int[] birds2 = new int[]{3, 10, 2, 9};
+        bonAppetit(birds2, 1, 12);
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -243,5 +240,91 @@ public class easyChallenges {
         output[0] = counterHighest;
         output[1] = counterLowest;
         return output;
+    }
+
+    static int divisibleSumPairs(int n, int k, int[] ar) {
+        int counter = 0;
+        for (int i = 0; i < ar.length; i++) {
+            for (int j = i + 1; j < ar.length; j++) {
+                if ((ar[i] + ar[j]) % k == 0) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
+    }
+
+//    static int birthday(ArrayList<Integer> s, int d, int m) {
+//        int output = 0;
+//        for (int i = 0; i < s.size(); i++) {
+//            int sum = 0;
+//            for (int j = 0; j < m; j++) {
+//                sum += s.get(j+i);
+//            }
+//            if (sum == d) {
+//                output++;
+//            }
+//        }
+//        return output;
+//    }
+
+    static int migratoryBirds(int[] arr) {
+        int winner = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int bird : arr) {
+            int count = map.containsKey(bird) ? map.get(bird) : 0;
+            map.put(bird, count + 1);
+        }
+//        for (Map.Entry<Integer, Integer> bird : map.entrySet()) {
+//            if (bird.getValue() > winner) {
+//                winner = bird.getKey();
+//            }
+//        }
+//        return winner;
+        // Found looking through discussions on the problem, but don't really know how it works
+        return Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey();
+    }
+
+    static void bonAppetit(int[] bill, int k, int b) {
+        int dinner = 0;
+        for (int i = 0; i < bill.length; i++) {
+            if (i == k) {
+                continue;
+            }
+            dinner += bill[i];
+        }
+        dinner = dinner / 2;
+        if (dinner == b) {
+            System.out.println("Bon Appetit");
+        } else {
+            System.out.println(b - dinner);
+        }
+    }
+
+    static int sockMerchant(int n, int[] ar) {
+        int pairs = 0;
+        HashSet<Integer> socks = new HashSet<>();
+        for (int i = 0; i < ar.length; i++) {
+            if (!socks.contains(ar[i])) {
+                socks.add(ar[i]);
+            } else {
+                pairs++;
+                socks.remove(ar[i]);
+            }
+        }
+        return pairs;
+    }
+
+    static int pageCount(int n, int p) {
+        int backCount = 0;
+        int frontCount = (p / 2);
+        if (n - p == 1 && n % 2 == 0) {
+            backCount = (n - p);
+        } else if (n - p == 1 && n % 2 != 0) {
+            return backCount;
+        } else {
+            backCount = (n - p) / 2;
+        }
+        return Math.min(frontCount, backCount);
     }
 }
