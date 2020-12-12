@@ -314,4 +314,17 @@ public class easyChallenges {
         }
         return pairs;
     }
+
+    static int pageCount(int n, int p) {
+        int backCount = 0;
+        int frontCount = (p / 2);
+        if (n - p == 1 && n % 2 == 0) {
+            backCount = (n - p);
+        } else if (n - p == 1 && n % 2 != 0) {
+            return backCount;
+        } else {
+            backCount = (n - p) / 2;
+        }
+        return Math.min(frontCount, backCount);
+    }
 }
