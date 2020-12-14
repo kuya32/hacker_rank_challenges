@@ -363,6 +363,16 @@ public class easyChallenges {
         }
     }
 
-    
+    static String catAndMouse(int x, int y, int z) {
+        String output = "";
+        if (Math.abs(z - x) > Math.abs(z - y)) {
+            output = "Cat B";
+        } else if (Math.abs(z - x) < Math.abs(z - y)) {
+            output = "Cat A";
+        } else {
+            output = "Mouse C";
+        }
+        return output;
+    }
 
 }
