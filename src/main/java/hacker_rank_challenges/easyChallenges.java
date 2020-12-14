@@ -327,4 +327,52 @@ public class easyChallenges {
         }
         return Math.min(frontCount, backCount);
     }
+
+    public static int countingValleys(int steps, String path) {
+        String[] newPath = path.split("");
+        int counter = 0;
+        int hike = 0;
+        for (String direction : newPath) {
+            if (direction.equals("U")) {
+                hike++;
+            } else if (direction.equals("D")) {
+                hike--;
+            }
+            if ((hike == 0 && direction.equals("U"))) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    static int getMoneySpent(int[] keyboards, int[] drives, int b) {
+        int cost;
+        int largestCost = 0;
+        for (int i = 0; i < keyboards.length; i++) {
+            for (int j = 0; j < drives.length; j++) {
+                cost = keyboards[i] + drives[j];
+                if (cost <= b && cost > largestCost) {
+                    largestCost = cost;
+                }
+            }
+        }
+        if(largestCost == 0) {
+            return -1;
+        } else {
+            return largestCost;
+        }
+    }
+
+    static String catAndMouse(int x, int y, int z) {
+        String output = "";
+        if (Math.abs(z - x) > Math.abs(z - y)) {
+            output = "Cat B";
+        } else if (Math.abs(z - x) < Math.abs(z - y)) {
+            output = "Cat A";
+        } else {
+            output = "Mouse C";
+        }
+        return output;
+    }
+
 }
