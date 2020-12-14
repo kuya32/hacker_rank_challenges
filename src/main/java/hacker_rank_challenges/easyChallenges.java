@@ -345,4 +345,24 @@ public class easyChallenges {
         return counter;
     }
 
+    static int getMoneySpent(int[] keyboards, int[] drives, int b) {
+        int cost;
+        int largestCost = 0;
+        for (int i = 0; i < keyboards.length; i++) {
+            for (int j = 0; j < drives.length; j++) {
+                cost = keyboards[i] + drives[j];
+                if (cost <= b && cost > largestCost) {
+                    largestCost = cost;
+                }
+            }
+        }
+        if(largestCost == 0) {
+            return -1;
+        } else {
+            return largestCost;
+        }
+    }
+
+    
+
 }
