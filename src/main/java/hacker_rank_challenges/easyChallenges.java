@@ -327,4 +327,22 @@ public class easyChallenges {
         }
         return Math.min(frontCount, backCount);
     }
+
+    public static int countingValleys(int steps, String path) {
+        String[] newPath = path.split("");
+        int counter = 0;
+        int hike = 0;
+        for (String direction : newPath) {
+            if (direction.equals("U")) {
+                hike++;
+            } else if (direction.equals("D")) {
+                hike--;
+            }
+            if ((hike == 0 && direction.equals("U"))) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
 }
