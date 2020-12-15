@@ -375,4 +375,16 @@ public class easyChallenges {
         return output;
     }
 
+    static int hurdleRace(int k, int[] height) {
+        int doses = 0;
+        int maxHurdle = 0;
+        for (int hurdle : height) {
+            if (hurdle > k && hurdle > maxHurdle) {
+                doses = hurdle - k;
+                maxHurdle = hurdle;
+            }
+        }
+        return doses;
+    }
+
 }
