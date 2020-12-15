@@ -6,8 +6,10 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int[] birds2 = new int[]{3, 10, 2, 9};
-        bonAppetit(birds2, 1, 12);
+        int[] birds2 = new int[]{1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5,
+                5, 5, 5, 5, 5, 5, 5, 5, 5};
+        String word = "abc";
+        System.out.println(designerPdfViewer(birds2, word));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -385,6 +387,27 @@ public class easyChallenges {
             }
         }
         return doses;
+    }
+
+    static int designerPdfViewer(int[] h, String word) {
+        String[] alphabet = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",};
+        String[] letters = word.split("");
+        int output = letters.length;
+        int largestHeight = 0;
+        for (String letter : letters) {
+            for (String alphaLetter : alphabet) {
+                if (letter.equals(alphaLetter)) {
+                    int indexHeight;
+                    indexHeight = Arrays.asList(alphabet).indexOf(alphaLetter);
+                    if (h[indexHeight] > largestHeight) {
+                        largestHeight = h[indexHeight];
+                    }
+                }
+            }
+        }
+        output = largestHeight * output;
+        return output;
     }
 
 }
