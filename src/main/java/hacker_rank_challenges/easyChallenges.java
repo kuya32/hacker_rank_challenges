@@ -433,4 +433,21 @@ public class easyChallenges {
         }
         return (presentStudents >= k) ? "NO" : "YES";
     }
+
+    static int beautifulDays(int i, int j, int k) {
+        int counter = 0;
+        for (int day = i; day <= j; day++) {
+            StringBuilder temp = new StringBuilder();
+            temp.append(day);
+            temp = temp.reverse();
+            String temp1 = temp.toString();
+            int reverse = Integer.parseInt(temp1);
+            int beautiful = Math.abs(day - reverse);
+            if (beautiful % k == 0) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
 }
