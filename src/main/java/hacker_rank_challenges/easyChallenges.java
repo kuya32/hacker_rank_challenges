@@ -424,5 +424,13 @@ public class easyChallenges {
         return height;
     }
 
-
+    static String angryProfessor(int k, int[] a) {
+        int presentStudents = 0;
+        for (int present : a) {
+            if (present <= 0) {
+                presentStudents++;
+            }
+        }
+        return (presentStudents >= k) ? "NO" : "YES";
+    }
 }
