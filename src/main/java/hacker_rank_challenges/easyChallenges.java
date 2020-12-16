@@ -410,4 +410,16 @@ public class easyChallenges {
         return output;
     }
 
+//    static int utopianTree(int n) {
+//        if (n == 1) {
+//            return 1;
+//        } else if (n == 2) {
+//            return 2;
+//        }
+//        if (n % 2 == 0) {
+//            return
+//        }
+//    }
+
+
 }
