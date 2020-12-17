@@ -6,7 +6,7 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        System.out.println(viralAdvertising(4));
+        System.out.println(saveThePrisoner(107, 425601402, 2));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -457,5 +457,9 @@ public class easyChallenges {
             totalLikes += likes;
         }
         return (int) totalLikes;
+    }
+
+    static int saveThePrisoner(int n, int m, int s) {
+        return (s + m - 2) % n + 1;
     }
 }
