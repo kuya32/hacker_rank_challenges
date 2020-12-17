@@ -410,16 +410,44 @@ public class easyChallenges {
         return output;
     }
 
-//    static int utopianTree(int n) {
-//        if (n == 1) {
-//            return 1;
-//        } else if (n == 2) {
-//            return 2;
-//        }
-//        if (n % 2 == 0) {
-//            return
-//        }
-//    }
+    static int utopianTree(int n) {
+        int height = 1;
+        if (n != 0) {
+            for (int i = 1; i <= n; i++) {
+                if (i % 2 == 0) {
+                    height++;
+                } else {
+                    height = height * 2;
+                }
+            }
+        }
+        return height;
+    }
 
+    static String angryProfessor(int k, int[] a) {
+        int presentStudents = 0;
+        for (int present : a) {
+            if (present <= 0) {
+                presentStudents++;
+            }
+        }
+        return (presentStudents >= k) ? "NO" : "YES";
+    }
+
+    static int beautifulDays(int i, int j, int k) {
+        int counter = 0;
+        for (int day = i; day <= j; day++) {
+            StringBuilder temp = new StringBuilder();
+            temp.append(day);
+            temp = temp.reverse();
+            String temp1 = temp.toString();
+            int reverse = Integer.parseInt(temp1);
+            int beautiful = Math.abs(day - reverse);
+            if (beautiful % k == 0) {
+                counter++;
+            }
+        }
+        return counter;
+    }
 
 }
