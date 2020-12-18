@@ -6,7 +6,9 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        System.out.println(saveThePrisoner(107, 425601402, 2));
+        int[] a = new int[]{3, 4, 5};
+        int[] queries = new int[]{1, 2};
+        System.out.println(Arrays.toString(circularArrayRotation(a, 2, queries)));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -462,4 +464,31 @@ public class easyChallenges {
     static int saveThePrisoner(int n, int m, int s) {
         return (s + m - 2) % n + 1;
     }
+
+//    static int[] circularArrayRotation(int[] a, int k, int[] queries) {
+//        int size = a.length;
+//        for (int j = 1; j <= k; j++) {
+//            int temp = a[size - 1];
+//            for (int i = size - 2; i >= 0; i--) {
+//                a[i + 1] = a[i];
+//            }
+//            a[0] = temp;
+//        }
+//        return a;
+//        Queue<Integer> que = new LinkedList<>();
+//        int size = a.length;
+//        int[] newA = new int[size];
+//        for (int i = size - 1; i >= 0; i--) {
+//            que.add(a[i]);
+//        }
+//        for (int i = 0; i <= k; i++) {
+//            que.add(que.remove());
+//        }
+//        for (int i = 0; i <= size - 1; i++) {
+//            newA[i] = que.remove();
+//        }
+//        return a;
+//    }
+
+
 }
