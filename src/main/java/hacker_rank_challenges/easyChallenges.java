@@ -6,10 +6,7 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int[] birds2 = new int[]{1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5,
-                5, 5, 5, 5, 5, 5, 5, 5, 5};
-        String word = "abc";
-        System.out.println(designerPdfViewer(birds2, word));
+        System.out.println(saveThePrisoner(107, 425601402, 2));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -450,4 +447,19 @@ public class easyChallenges {
         return counter;
     }
 
+    static int viralAdvertising(int n) {
+        double totalLikes = 0;
+        double likes;
+        double recipients = 5;
+        for (int i = 1; i <= n; i++) {
+            likes = Math.floor(recipients/2);
+            recipients = 3 * likes;
+            totalLikes += likes;
+        }
+        return (int) totalLikes;
+    }
+
+    static int saveThePrisoner(int n, int m, int s) {
+        return (s + m - 2) % n + 1;
+    }
 }
