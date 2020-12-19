@@ -6,7 +6,8 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        System.out.println(saveThePrisoner(107, 425601402, 2));
+        int[] input = new int[]{2, 3, 1};
+        System.out.println(Arrays.toString(permutationEquation(input)));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -462,4 +463,15 @@ public class easyChallenges {
     static int saveThePrisoner(int n, int m, int s) {
         return (s + m - 2) % n + 1;
     }
+
+//    static int[] permutationEquation(int[] p) {
+//        System.out.println(p.length);
+//        int[] output = new int[p.length];
+//        for (int i = 1; i < p.length; i++) {
+//            output[i - 1] = p[p[i] - 1] - 1;
+//        }
+//        return output;
+//    }
+
+
 }
