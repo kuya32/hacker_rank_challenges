@@ -6,8 +6,8 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int[] input = new int[]{2, 3, 1};
-        System.out.println(Arrays.toString(permutationEquation(input)));
+        int[] input = new int[]{1, 1, 1, 0, 1, 1, 0, 0, 0, 0};
+        System.out.println(jumpingOnClouds(input, 3));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -473,5 +473,18 @@ public class easyChallenges {
 //        return output;
 //    }
 
-
+    static int jumpingOnClouds(int[] c, int k) {
+        int totalEnergy = 100;
+        int n = c.length;
+        int i = k % n;
+        totalEnergy -= c[i] * 2 + 1;
+        while (i != 0) {
+            i = (i + k) % n;
+            totalEnergy--;
+            if (c[i] == 1) {
+                totalEnergy = totalEnergy - 2;
+            }
+        }
+        return totalEnergy;
+    }
 }
