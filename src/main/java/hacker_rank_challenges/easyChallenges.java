@@ -543,4 +543,45 @@ public class easyChallenges {
         }
         return result;
     }
+
+    static void printLinkedList(Node head) {
+        Node n = head;
+        while (n != null) {
+            System.out.println(n.data);
+            n = n.next;
+        }
+    }
+
+    static Node insertNodeAtTail(Node head, int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp;
+            temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+        newNode.next = null;
+        return head;
+    }
+
+    static Node insertNodeAtHead(Node llist, int data) {
+        Node newNode = new Node(data);
+        newNode.next = llist;
+        llist = newNode;
+        return llist;
+    }
+
+    static class Node {
+        int data;
+        Node next;
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
 }
