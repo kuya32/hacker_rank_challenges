@@ -1,19 +1,12 @@
 package hacker_rank_challenges;
 
-import com.google.common.collect.HashBiMap;
-
 import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        List<Integer> input = new ArrayList<Integer>();
-        input.add(5);
-        input.add(4);
-        input.add(3);
-        input.add(2);
-        input.add(1);
-        System.out.println(input);
-        System.out.println(rotateLeft(4, input));
+        String[] strings = new String[]{"aba", "baba", "aba", "xzxb"};
+        String[] queries = new String[]{"aba", "xzxb", "ab"};
+        System.out.println(Arrays.toString(matchingStrings(strings, queries)));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -519,17 +512,35 @@ public class easyChallenges {
         return largestSum;
     }
 
-//    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
-//        while (d == 0) {
-//            int i;
-//            int temp;
-//            temp = arr.get(0);
-//            for (i = 0; i < arr.size() - 1; i++){
-//                arr.set(i, arr.get(i + 1));
-//            }
-//            arr.set(i, temp);
-//            d--;
-//        }
-//        return ;
-//    }
+    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+        while (d != 0) {
+            rotateOneLeft(arr);
+            d--;
+        }
+        return arr;
+    }
+
+    public static void rotateOneLeft(List<Integer> arr) {
+        int i;
+        int temp;
+        temp = arr.get(0);
+        for (i = 0; i < arr.size() - 1; i++){
+            arr.set(i, arr.get(i + 1));
+        }
+        arr.set(i, temp);
+    }
+
+    static int[] matchingStrings(String[] strings, String[] queries) {
+        int[] result = new int[queries.length];
+
+        for(int i = 0; i < queries.length; i++) {
+            for (String string : strings) {
+                if (queries[i].equals(string)) {
+                    result[i]++;
+                }
+
+            }
+        }
+        return result;
+    }
 }
