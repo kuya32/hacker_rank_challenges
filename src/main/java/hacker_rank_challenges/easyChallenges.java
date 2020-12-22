@@ -6,8 +6,8 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int[] input = new int[]{1, 1, 1, 0, 1, 1, 0, 0, 0, 0};
-        System.out.println(jumpingOnClouds(input, 3));
+        int[] input = new int[]{1, 2, 3, 4 ,5};
+        System.out.println(Arrays.toString(reverseArray(input)));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -486,5 +486,15 @@ public class easyChallenges {
             }
         }
         return totalEnergy;
+    }
+
+    static int[] reverseArray(int[] a) {
+        int temp;
+        for (int i = 0; i < a.length / 2; i++) {
+            temp = a[i];
+            a[i] = a[a.length - i - 1];
+            a[a.length - i - 1] = temp;
+        }
+        return a;
     }
 }
