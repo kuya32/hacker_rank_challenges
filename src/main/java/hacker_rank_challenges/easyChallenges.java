@@ -6,8 +6,14 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int[] input = new int[]{2, 3, 1};
-        System.out.println(Arrays.toString(permutationEquation(input)));
+        List<Integer> input = new ArrayList<Integer>();
+        input.add(5);
+        input.add(4);
+        input.add(3);
+        input.add(2);
+        input.add(1);
+        System.out.println(input);
+        System.out.println(rotateLeft(4, input));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -473,5 +479,57 @@ public class easyChallenges {
 //        return output;
 //    }
 
+    static int jumpingOnClouds(int[] c, int k) {
+        int totalEnergy = 100;
+        int n = c.length;
+        int i = k % n;
+        totalEnergy -= c[i] * 2 + 1;
+        while (i != 0) {
+            i = (i + k) % n;
+            totalEnergy--;
+            if (c[i] == 1) {
+                totalEnergy = totalEnergy - 2;
+            }
+        }
+        return totalEnergy;
+    }
 
+    static int[] reverseArray(int[] a) {
+        int temp;
+        for (int i = 0; i < a.length / 2; i++) {
+            temp = a[i];
+            a[i] = a[a.length - i - 1];
+            a[a.length - i - 1] = temp;
+        }
+        return a;
+    }
+
+    static int hourglassSum(int[][] arr) {
+        int largestSum = -64;
+        int sum;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                sum =
+                        arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2];
+                if (sum > largestSum) {
+                    largestSum = sum;
+                }
+            }
+        }
+        return largestSum;
+    }
+
+//    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+//        while (d == 0) {
+//            int i;
+//            int temp;
+//            temp = arr.get(0);
+//            for (i = 0; i < arr.size() - 1; i++){
+//                arr.set(i, arr.get(i + 1));
+//            }
+//            arr.set(i, temp);
+//            d--;
+//        }
+//        return ;
+//    }
 }
