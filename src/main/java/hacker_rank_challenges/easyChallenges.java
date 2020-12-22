@@ -6,12 +6,14 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        int[][] input = new int[][]{{-9, -9, -9,  1, 1, 1}, {0, -9,  0,  4, 3, 2}, {-9, -9,
-                -9,  1, 2, 3},
-                {0,  0,  8,  6, 6, 0},
-                {0, 0, 0, -2, 0, 0},
-                {0,  0,  1,  2, 4, 0}};
-        System.out.println((hourglassSum(input)));
+        List<Integer> input = new ArrayList<Integer>();
+        input.add(5);
+        input.add(4);
+        input.add(3);
+        input.add(2);
+        input.add(1);
+        System.out.println(input);
+        System.out.println(rotateLeft(4, input));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -516,4 +518,18 @@ public class easyChallenges {
         }
         return largestSum;
     }
+
+//    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+//        while (d == 0) {
+//            int i;
+//            int temp;
+//            temp = arr.get(0);
+//            for (i = 0; i < arr.size() - 1; i++){
+//                arr.set(i, arr.get(i + 1));
+//            }
+//            arr.set(i, temp);
+//            d--;
+//        }
+//        return ;
+//    }
 }
