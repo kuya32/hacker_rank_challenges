@@ -4,9 +4,13 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        String[] strings = new String[]{"aba", "baba", "aba", "xzxb"};
-        String[] queries = new String[]{"aba", "xzxb", "ab"};
-        System.out.println(Arrays.toString(matchingStrings(strings, queries)));
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(16);
+        list.add(13);
+        list.add(7);
+        System.out.println(list);
+        Node head = new Node(16);
+        System.out.println(insertNodeAtHead(head, 1, 2).data);
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -568,11 +572,30 @@ public class easyChallenges {
         return head;
     }
 
-    static Node insertNodeAtHead(Node llist, int data) {
+    static Node insertNodeAtHead(Node llist, int i, int data) {
         Node newNode = new Node(data);
         newNode.next = llist;
         llist = newNode;
         return llist;
+    }
+
+    static Node insertNodeAtPosition(Node head, int data, int position) {
+        Node temp = head;
+        Node newNode = new Node(data);
+        if (head == null) {
+            return newNode;
+        }
+        if (position == 0) {
+            newNode.next = head;
+            return newNode;
+        }
+        int counter = 0;
+        while (counter++ < position - 1) {
+            temp = temp.next;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+        return head;
     }
 
     static class Node {
