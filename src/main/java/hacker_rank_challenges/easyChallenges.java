@@ -598,6 +598,19 @@ public class easyChallenges {
         return head;
     }
 
+    static Node deleteNode(Node head, int position) {
+        Node temp = head;
+        if (position == 0) {
+            head = head.next;
+        }
+        int counter = 0;
+        while (counter++ < position - 1) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        return head;
+    }
+
     static class Node {
         int data;
         Node next;
