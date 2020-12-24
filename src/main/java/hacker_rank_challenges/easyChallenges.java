@@ -1,19 +1,16 @@
 package hacker_rank_challenges;
 
-import com.google.common.collect.HashBiMap;
-
 import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        List<Integer> input = new ArrayList<Integer>();
-        input.add(5);
-        input.add(4);
-        input.add(3);
-        input.add(2);
-        input.add(1);
-        System.out.println(input);
-        System.out.println(rotateLeft(4, input));
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(16);
+        list.add(13);
+        list.add(7);
+        System.out.println(list);
+        Node head = new Node(16);
+        System.out.println(insertNodeAtHead(head, 1, 2).data);
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -519,17 +516,108 @@ public class easyChallenges {
         return largestSum;
     }
 
-//    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
-//        while (d == 0) {
-//            int i;
-//            int temp;
-//            temp = arr.get(0);
-//            for (i = 0; i < arr.size() - 1; i++){
-//                arr.set(i, arr.get(i + 1));
-//            }
-//            arr.set(i, temp);
-//            d--;
-//        }
-//        return ;
-//    }
+    public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+        while (d != 0) {
+            rotateOneLeft(arr);
+            d--;
+        }
+        return arr;
+    }
+
+    public static void rotateOneLeft(List<Integer> arr) {
+        int i;
+        int temp;
+        temp = arr.get(0);
+        for (i = 0; i < arr.size() - 1; i++){
+            arr.set(i, arr.get(i + 1));
+        }
+        arr.set(i, temp);
+    }
+
+    static int[] matchingStrings(String[] strings, String[] queries) {
+        int[] result = new int[queries.length];
+
+        for(int i = 0; i < queries.length; i++) {
+            for (String string : strings) {
+                if (queries[i].equals(string)) {
+                    result[i]++;
+                }
+
+            }
+        }
+        return result;
+    }
+
+    static void printLinkedList(Node head) {
+        Node n = head;
+        while (n != null) {
+            System.out.println(n.data);
+            n = n.next;
+        }
+    }
+
+    static Node insertNodeAtTail(Node head, int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp;
+            temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+        newNode.next = null;
+        return head;
+    }
+
+    static Node insertNodeAtHead(Node llist, int i, int data) {
+        Node newNode = new Node(data);
+        newNode.next = llist;
+        llist = newNode;
+        return llist;
+    }
+
+    static Node insertNodeAtPosition(Node head, int data, int position) {
+        Node temp = head;
+        Node newNode = new Node(data);
+        if (head == null) {
+            return newNode;
+        }
+        if (position == 0) {
+            newNode.next = head;
+            return newNode;
+        }
+        int counter = 0;
+        while (counter++ < position - 1) {
+            temp = temp.next;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+        return head;
+    }
+
+    static Node deleteNode(Node head, int position) {
+        Node temp = head;
+        if (position == 0) {
+            head = head.next;
+        }
+        int counter = 0;
+        while (counter++ < position - 1) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        return head;
+    }
+
+    static class Node {
+        int data;
+        Node next;
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
 }
