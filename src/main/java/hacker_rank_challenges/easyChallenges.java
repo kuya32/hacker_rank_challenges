@@ -611,6 +611,20 @@ public class easyChallenges {
         return head;
     }
 
+    static void reversePrintStack(Node head) {
+        Stack<Node> stack = new Stack<>();
+        if (head != null) {
+            Node temp = head;
+            while (temp != null) {
+                stack.push(temp);
+                temp = temp.next;
+            }
+            while(!stack.isEmpty()) {
+                System.out.println(stack.pop().data);
+            }
+        }
+    }
+
     static void reversePrint(Node head) {
         Node temp = head;
         Node next = null;
@@ -624,18 +638,15 @@ public class easyChallenges {
         head = prev;
     }
 
-    static void reversePrintStack(Node head) {
-        Stack<Node> stack = new Stack<>();
-        if (head != null) {
-            Node temp = head;
-            while (temp != null) {
-                stack.push(temp);
-                temp = temp.next;
-            }
-            while(!stack.isEmpty()) {
-                System.out.println(stack.pop().data);
+    static boolean compareLists(Node head1, Node head2) {
+        while (head1.next != null) {
+            while (head2.next != null) {
+                if (head1.data != head2.data) {
+                    return false;
+                }
             }
         }
+        return true;
     }
 
     static class Node {
