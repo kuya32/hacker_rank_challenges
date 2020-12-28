@@ -5,12 +5,12 @@ import java.util.*;
 public class easyChallenges {
     public static void main(String args[]) {
         LinkedList<Integer> list = new LinkedList<>();
-        list.add(16);
-        list.add(13);
-        list.add(7);
+        Node head = new Node(3);
+        list.add(head.data);
+        list.add(2);
+        list.add(1);
         System.out.println(list);
-        Node head = new Node(16);
-        System.out.println(insertNodeAtHead(head, 1, 2).data);
+        System.out.println(getNode(head, 2));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -677,7 +677,25 @@ public class easyChallenges {
         }
     }
 
-    static class Node {
+    static int getNode(Node head, int positionFromTail) {
+        int length = 0;
+        Node temp = head;
+
+        while (temp != null) {
+            temp = temp.next;
+            length++;
+        }
+
+        if(length > positionFromTail) {
+            temp = head;
+            for (int i = 1; i < length - positionFromTail ; i++) {
+                temp = temp.next;
+            }
+        }
+        return temp.data;
+    }
+
+    public static class Node {
         int data;
         Node next;
         Node(int d) {
