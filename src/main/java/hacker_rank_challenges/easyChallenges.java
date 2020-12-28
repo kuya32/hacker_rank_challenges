@@ -639,14 +639,22 @@ public class easyChallenges {
     }
 
     static boolean compareLists(Node head1, Node head2) {
-        while (head1.next != null) {
-            while (head2.next != null) {
-                if (head1.data != head2.data) {
+        Node temp = head1;
+        Node temp2 = head2;
+        if (temp == null && temp2 == null) {
+            return true;
+        } else if ((temp == null && temp2 != null) || temp != null && temp2 == null) {
+            return false;
+        } else {
+            while (temp.next != null) {
+                if (temp.data != temp2.data || temp2.next == null) {
                     return false;
                 }
+                temp = temp.next;
+                temp2 = temp2.next;
             }
+            return temp2.next == null;
         }
-        return true;
     }
 
     static class Node {
