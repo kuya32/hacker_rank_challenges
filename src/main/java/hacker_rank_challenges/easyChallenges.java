@@ -706,6 +706,55 @@ public class easyChallenges {
         return head;
     }
 
+//    static boolean hasCycle(Node head) {
+//        Node temp = head;
+//        if (temp == null) {
+//            return false;
+//        }
+//        HashSet<Integer> set = new HashSet<>();
+//        while (temp.next != null) {
+//            if (!set.add(temp.data)) {
+//                return true;
+//            }
+//            temp = temp.next;
+//        }
+//        return false;
+//    }
+
+    static int findMergeNode(Node head1, Node head2) {
+        int lengthHead1 = findLength(head1);
+        int lengthHead2 = findLength(head2);
+        int d = lengthHead2 - lengthHead1;
+        if (lengthHead1 > lengthHead2) {
+            Node temp = head1;
+            head1 = head2;
+            head2 = temp;
+            d = lengthHead1 - lengthHead2;
+        }
+
+        for (int i = 0; i < d; i++) {
+            head2 = head2.next;
+        }
+
+        while (head1 != null && head2 != null) {
+            if (head1 == head2) {
+                return head1.data;
+            }
+            head1 = head1.next;
+            head2 = head2.next;
+        }
+        return head1.data;
+    }
+
+    static int findLength(Node head) {
+        int length = 0;
+        while (head != null) {
+            length++;
+            head = head.next;
+        }
+        return length;
+    }
+
     public static class Node {
         int data;
         Node next;
