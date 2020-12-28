@@ -657,6 +657,26 @@ public class easyChallenges {
         }
     }
 
+    static Node mergeLists(Node head1, Node head2) {
+        Node temp = head1;
+        Node temp2 = head2;
+        if (temp == null && temp2 == null) {
+            return null;
+        } else if (temp == null && temp2 != null) {
+            return temp2;
+        } else if (temp != null && temp2 == null) {
+            return temp;
+        } else {
+            if (temp.data < temp2.data) {
+                temp.next = mergeLists(temp.next, temp2);
+                return temp;
+            } else {
+                temp2.next = mergeLists(temp, temp2.next);
+                return temp2;
+            }
+        }
+    }
+
     static class Node {
         int data;
         Node next;
