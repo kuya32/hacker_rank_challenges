@@ -778,6 +778,13 @@ public class easyChallenges {
         return newHead;
     }
 
+    public static void preOrder(Node root) {
+        if (root == null) return;
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
     static int findLength(Node head) {
         int length = 0;
         while (head != null) {
@@ -791,10 +798,14 @@ public class easyChallenges {
         int data;
         Node next;
         Node prev;
+        Node left;
+        Node right;
         Node(int d) {
             data = d;
             next = null;
             prev = null;
+            left = null;
+            right = null;
         }
     }
 
