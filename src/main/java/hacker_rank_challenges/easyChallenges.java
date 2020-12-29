@@ -746,6 +746,22 @@ public class easyChallenges {
         return head1.data;
     }
 
+    static Node sortedInsert(Node head, int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            return newNode;
+        } else if (newNode.data <= head.data) {
+            newNode.next = head;
+            head.prev = newNode;
+            return newNode;
+        } else {
+            Node temp = sortedInsert(head.next, data);
+            head.next = temp;
+            temp.prev = head;
+            return head;
+        }
+    }
+
     static int findLength(Node head) {
         int length = 0;
         while (head != null) {
@@ -758,9 +774,11 @@ public class easyChallenges {
     public static class Node {
         int data;
         Node next;
+        Node prev;
         Node(int d) {
             data = d;
             next = null;
+            prev = null;
         }
     }
 
