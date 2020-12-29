@@ -762,6 +762,22 @@ public class easyChallenges {
         }
     }
 
+    static Node reverse(Node head) {
+        Node temp = head;
+        Node newHead = head;
+        if (temp == null) {
+            return null;
+        }
+        while (temp != null) {
+            Node prev = temp.prev;
+            temp.prev = temp.next;
+            temp.next = prev;
+            newHead = temp;
+            temp = temp.prev;
+        }
+        return newHead;
+    }
+
     static int findLength(Node head) {
         int length = 0;
         while (head != null) {
