@@ -847,6 +847,21 @@ public class easyChallenges {
         }
     }
 
+    public static Node insert(Node root,int data) {
+        if (root == null) {
+            Node newNode = new Node(data);
+            root = newNode;
+            root.left = null;
+            root.right = null;
+            root = newNode;
+        } else if (root.data > data) {
+            root.left = insert(root.left, data);
+        } else {
+            root.right = insert(root.right, data);
+        }
+        return root;
+    }
+
 
     public static class Node {
         int data;
