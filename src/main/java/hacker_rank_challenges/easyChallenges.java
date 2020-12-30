@@ -801,6 +801,16 @@ public class easyChallenges {
         System.out.print(root.data + " ");
     }
 
+    public static int height(Node root) {
+        if (root == null) return -1;
+
+        int left = 1 + height(root.left);
+        int right = 1 + height(root.right);
+
+        return left > right ? left:right;
+    }
+
+
     public static class Node {
         int data;
         Node next;
