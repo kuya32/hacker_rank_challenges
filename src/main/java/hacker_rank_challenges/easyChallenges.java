@@ -762,6 +762,29 @@ public class easyChallenges {
         }
     }
 
+    static Node reverse(Node head) {
+        Node temp = head;
+        Node newHead = head;
+        if (temp == null) {
+            return null;
+        }
+        while (temp != null) {
+            Node prev = temp.prev;
+            temp.prev = temp.next;
+            temp.next = prev;
+            newHead = temp;
+            temp = temp.prev;
+        }
+        return newHead;
+    }
+
+    public static void preOrder(Node root) {
+        if (root == null) return;
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
     static int findLength(Node head) {
         int length = 0;
         while (head != null) {
@@ -771,14 +794,87 @@ public class easyChallenges {
         return length;
     }
 
+    public static void postOrder(Node root) {
+        if (root == null) return;
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.print(root.data + " ");
+    }
+
+    public static int height(Node root) {
+        if (root == null) return -1;
+
+        int left = 1 + height(root.left);
+        int right = 1 + height(root.right);
+
+        return left > right ? left:right;
+    }
+
+    public static void topView(Node root) {
+        leftView(root.left);
+        System.out.print(root.data + " ");
+        rightView(root.right);
+    }
+
+    public static void leftView(Node root) {
+        if (root == null) return;
+        leftView(root.left);
+        System.out.print(root.data + " ");
+    }
+
+    public static void rightView(Node root) {
+        if (root == null) return;
+        System.out.print(root.data + " ");
+        rightView(root.right);
+
+    }
+
+    public static void levelOrder(Node root) {
+        Node current = root;
+        if (current == null) return;
+        Queue<Node> que = new LinkedList<>();
+        que.add(current);
+        while (!que.isEmpty()) {
+            current = que.peek();
+            que.remove();
+            System.out.print(current.data + " ");
+            if (current.left != null) {
+                que.add(current.left);
+            }
+            if (current.right != null) {
+                que.add(current.right);
+            }
+        }
+    }
+
+    public static Node insert(Node root,int data) {
+        if (root == null) {
+            Node newNode = new Node(data);
+            root = newNode;
+            root.left = null;
+            root.right = null;
+            root = newNode;
+        } else if (root.data > data) {
+            root.left = insert(root.left, data);
+        } else {
+            root.right = insert(root.right, data);
+        }
+        return root;
+    }
+
+
     public static class Node {
         int data;
         Node next;
         Node prev;
+        Node left;
+        Node right;
         Node(int d) {
             data = d;
             next = null;
             prev = null;
+            left = null;
+            right = null;
         }
     }
 
