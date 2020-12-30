@@ -829,7 +829,23 @@ public class easyChallenges {
 
     }
 
-    
+    public static void levelOrder(Node root) {
+        Node current = root;
+        if (current == null) return;
+        Queue<Node> que = new LinkedList<>();
+        que.add(current);
+        while (!que.isEmpty()) {
+            current = que.peek();
+            que.remove();
+            System.out.print(current.data + " ");
+            if (current.left != null) {
+                que.add(current.left);
+            }
+            if (current.right != null) {
+                que.add(current.right);
+            }
+        }
+    }
 
 
     public static class Node {
