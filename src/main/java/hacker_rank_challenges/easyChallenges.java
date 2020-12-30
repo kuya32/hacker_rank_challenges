@@ -794,6 +794,13 @@ public class easyChallenges {
         return length;
     }
 
+    public static void postOrder(Node root) {
+        if (root == null) return;
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.print(root.data + " ");
+    }
+
     public static class Node {
         int data;
         Node next;
