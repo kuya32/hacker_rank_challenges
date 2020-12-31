@@ -4,12 +4,24 @@ import java.util.*;
 
 public class easyChallenges {
     public static void main(String args[]) {
-        LinkedList<Integer> list = new LinkedList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        System.out.println(list);
-        System.out.println(removeDuplicates(list));
+        Node ten = new Node(10);
+        Node eight = new Node(8);
+        Node seven = new Node(7);
+        Node nine = new Node(9);
+        Node eleven = new Node(11);
+        Node twelve = new Node(12);
+        Node thirteen = new Node(13);
+        Node thirtyTwo = new Node(32);
+
+        ten.left = eight;
+        eight.left = seven;
+        eight.right = nine;
+        ten.right = twelve;
+        twelve.left = eleven;
+        twelve.right = thirteen;
+        thirteen.right = thirtyTwo;
+
+        System.out.println(checkBST(ten));
     }
 
     public static int diagonalDifference(int[][] arr) {
@@ -887,9 +899,26 @@ public class easyChallenges {
         }
     }
 
-    boolean checkBST(Node root) {
-        Node temp = root;
-        return false;
+    public static boolean checkBST(Node root) {
+        Node current = root;
+        boolean output = true;
+        Queue<Node> que = new LinkedList<>();
+        que.add(current);
+        while (!que.isEmpty()) {
+            current = que.peek();
+            que.remove();
+            if (current.left != null && current.data <= current.left.data) {
+                output = false;
+            } else if (current.left != null) {
+                que.add(current.left);
+            }
+            if (current.right != null && current.data >= current.right.data) {
+                output = false;
+            } else if (current.right != null) {
+                que.add(current.right);
+            }
+        }
+        return output;
     }
 
 
