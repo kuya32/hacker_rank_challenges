@@ -862,6 +862,37 @@ public class easyChallenges {
         return root;
     }
 
+    public static Node lca(Node root, int v1, int v2) {
+        while (root != null) {
+            if (root.data > v1 && root.data > v2) {
+                root = root.left;
+            } else if (root.data < v1 && root.data < v2) {
+                root = root.right;
+            } else {
+                break;
+            }
+        }
+        return root;
+    }
+
+    void decode(String s, Node root) {
+        Node temp = root;
+        String[] numbers = s.split("");
+        for (int i = 0; i < numbers.length; i++) {
+            temp = numbers[i].equals("0") ? temp.left : temp.right;
+            if (temp.left == null && temp.right == null) {
+                System.out.print(temp.data);
+                temp = root;
+            }
+        }
+    }
+
+    boolean checkBST(Node root) {
+        Node temp = root;
+        return false;
+    }
+
+
 
     public static class Node {
         int data;
