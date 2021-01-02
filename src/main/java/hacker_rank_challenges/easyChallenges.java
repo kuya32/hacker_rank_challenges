@@ -921,7 +921,7 @@ public class easyChallenges {
         return output;
     }
 
-
+    
 
     public static class Node {
         int data;
